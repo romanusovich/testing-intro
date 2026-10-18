@@ -20,6 +20,7 @@ function addToCart(cart, product, quantity) {
   }
   return cart;
 }
+
 function changeQuantity(cart, id, quantity) { 
   if (quantity <= 0) {
     throw new RangeError('Количество должно быть больше нуля');
@@ -37,8 +38,17 @@ function changeQuantity(cart, id, quantity) {
   existed.quantity = quantity;
   return cart;
 }
-function removeFromCart() { return notImplemented(); }
+
+function removeFromCart(cart, id) {
+  const index = cart.findIndex((item) => item.id === id);
+  if (index !== -1) {
+    cart.splice(index, 1);
+  }
+  return cart;
+}
+
 function calculateCartSubtotal() { return notImplemented(); }
+
 function calculateOrderTotal() { return notImplemented(); }
 
 const cartApi = { addToCart, changeQuantity, removeFromCart, calculateCartSubtotal, calculateOrderTotal };
