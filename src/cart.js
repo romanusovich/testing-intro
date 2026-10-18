@@ -20,7 +20,6 @@ function addToCart(cart, product, quantity) {
   }
   return cart;
 }
-
 function changeQuantity(cart, id, quantity) { 
   if (quantity <= 0) {
     throw new RangeError('Количество должно быть больше нуля');
@@ -38,7 +37,6 @@ function changeQuantity(cart, id, quantity) {
   existed.quantity = quantity;
   return cart;
 }
-
 function removeFromCart(cart, id) {
   const index = cart.findIndex((item) => item.id === id);
   if (index !== -1) {
@@ -46,11 +44,9 @@ function removeFromCart(cart, id) {
   }
   return cart;
 }
-
 function calculateCartSubtotal(cart) {
   return cart.reduce((subtotal, item) => subtotal + item.price * item.quantity, 0);
 }
-
 function calculateOrderTotal(cart, promotion) {
   const result = {
     subtotal: calculateCartSubtotal(cart),
